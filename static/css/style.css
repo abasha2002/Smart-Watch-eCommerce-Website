@@ -350,3 +350,53 @@ footer .copyright p{
     line-height: 125.5%;
     margin: 0;
 }
+
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: -710px;
+    width: 700px;
+    height: 100%;
+    background-color: darkgray;
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.2);
+    transition: right 1s ease;
+    padding: 20px;
+}
+.OffCanvas-body::-webkit-scrollbar {
+    width: 0.5em;
+}
+.OffCanvas-body::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    
+}
+.OffCanvas-body{
+    height: 90%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+}
+
+.cart-panel.open {
+    right: 0;
+}
+.cart-panel.closing {
+    right: -700px;
+}
+
+.final-price{
+    border-top: 2px solid black
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.cart-product-title{
+    font-family: 'Poppins';
+    font-size: 20px;
+    color: black;
+    margin: 0;
+}
