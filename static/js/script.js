@@ -102,9 +102,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         cartItem.classList.add("cart-item");
                         cartItem.id = cartItemId; // Set the unique identifier
                         cartItem.innerHTML = `
-                            <div class="mt-4 d-flex align-items-center justify-content-between">
-                                <h3 class="cart-product-title">${product.title}</h3>
-                                <button class="remove-product-button"><div></div></button>
+                            <div class="mt-4 position-relative d-flex align-items-center justify-content-between">
+                                <div class="d-flex" style="gap:10px;">
+                                    <button class="remove-product-button"><div></div></button>
+                                    <h3 class="cart-product-title">${product.title}</h3>
+                                </div>
                                 <strong class="cart-product-price">$${(product.price - (product.price * 20 / 100)).toFixed(2)}</strong>
                             </div>
                         `;
