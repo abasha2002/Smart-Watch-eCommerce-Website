@@ -90,30 +90,56 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Add a click event listener to the product item
                 productItem.addEventListener("click", (event) => {
                     const target = event.target;
-
+                
                     if (target.classList.contains("first-icon")) {
                         // This is the first icon, you can handle it separately
-                        // Get the current count
-                        let count = parseInt(productCount.textContent);
-                        // Increment the count by one
-                        count += 1;
-                        // Update the count in the element
-                        productCount.textContent = count;
-
+                
+                        // Create a unique identifier for the cart item
+                        const cartItemId = `cart-item-${Date.now()}-${Math.random()}`;
+                
                         // Add the product information to the cart
                         const cartItem = document.createElement("div");
                         cartItem.classList.add("cart-item");
+                        cartItem.id = cartItemId; // Set the unique identifier
                         cartItem.innerHTML = `
                             <div class="mt-4 d-flex align-items-center justify-content-between">
                                 <h3 class="cart-product-title">${product.title}</h3>
+                                <button class="remove-product-button"><div></div></button>
                                 <strong class="cart-product-price">$${(product.price - (product.price * 20 / 100)).toFixed(2)}</strong>
                             </div>
                         `;
-
-                        OffCanvasDiv.appendChild(cartItem);
+                
+                        // Add a click event listener to the remove button
+                        const removeButton = cartItem.querySelector(".remove-product-button");
+                        removeButton.addEventListener("click", () => {
+                            // Remove the cart item from the OffCanvas using the unique identifier
+                            const cartItemToRemove = document.getElementById(cartItemId);
+                            OffCanvasDiv.removeChild(cartItemToRemove);
                         
+                            // Subtract the price of the removed product from the total price
+                            totalPrice -= (product.price - (product.price * 20 / 100));
+                        
+                            if (totalPrice < 0) {
+                                totalPrice = 0;
+                            }
+                        
+                            finalPriceContainer.querySelector(".final-price-text").textContent = `Final Price: $${totalPrice.toFixed(2)}`;
+                        
+                            // Recalculate the cart count based on the number of cart items
+                            const cartItems = OffCanvasDiv.querySelectorAll(".cart-item");
+                            const newCount = cartItems.length;
+                            productCount.textContent = newCount;
+                        });
+                
+                        OffCanvasDiv.appendChild(cartItem);
+                
                         totalPrice += (product.price - (product.price * 20 / 100));
                         finalPriceContainer.querySelector(".final-price-text").textContent = `Final Price: $${totalPrice.toFixed(2)}`;
+                
+                        // Update the cart count based on the number of cart items
+                        const cartItems = OffCanvasDiv.querySelectorAll(".cart-item");
+                        const newCount = cartItems.length;
+                        productCount.textContent = newCount;
                     }
                 });
 

@@ -361,7 +361,7 @@ footer .copyright p{
     background-color: darkgray;
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.2);
     transition: right 1s ease;
-    padding: 20px;
+    padding: 30px;
 }
 .OffCanvas-body::-webkit-scrollbar {
     width: 0.5em;
@@ -399,4 +399,23 @@ footer .copyright p{
     font-size: 20px;
     color: black;
     margin: 0;
+}
+
+.remove-product-button{
+    position: absolute;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    background-color: red;
+}
+.remove-product-button div{
+    width: 10px;
+    height: 3px;
+    background-color: white;
+    border: black;
 }
