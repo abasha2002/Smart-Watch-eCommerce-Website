@@ -361,7 +361,7 @@ footer .copyright p{
     background-color: darkgray;
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.2);
     transition: right 1s ease;
-    padding: 30px;
+    padding: 20px;
 }
 .OffCanvas-body::-webkit-scrollbar {
     width: 0.5em;
