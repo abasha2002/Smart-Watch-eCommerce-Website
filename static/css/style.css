@@ -88,6 +88,9 @@
         transform: translateY(0) !important;
         margin-top: 10px;
     }
+    .cart-panel {
+        width: 100% !important;
+    }
 }
 
 .section1{
